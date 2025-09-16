@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:15
+    container_name: booking_db
+    env_file:
+      - .env-non-dev
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:7
+    container_name: redis
+    
+  booking_app:
+    image: booking_image
+    container_name: booking_app
+    build: 
+      context: .
+    env_file:
+      - .env-non-dev
+    depends_on:
+      - redis
+      - db
+    command: ["booking/docker/app.sh"]
+    ports:
+      - 80:8000
+
+    celery:
+      image: celery_image
+      container_name: celery_booking
+      build: 
+        context: .
+      depends_on:
+        - redis
+      command: ["booking/docker/celery.sh", "celery"]
+      env_file:
+      - .env-non-dev
+    
+    flower:
+      image: celery_image
+      container_name: flower_booking
+      build: 
+        context: .
+      command: ["booking/docker/celery.sh", "flower"]
+      env_file:
+      - .env-non-dev
+      depends_on:
+        - redis
+
+      

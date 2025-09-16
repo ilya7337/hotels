@@ -1,0 +1,6 @@
+"email","hashed_password","role"
+"fedor@moloko.ru","tut_budet_hashed_password_1","client"
+"sharik@moloko.ru","tut_budet_hashed_password_2","client"
+"user@example.com","$2b$12$pUfuZ33WlwbpAtD13QSCJuXoLPgAvbct29952jt6KayNreZeoyl/W","admin"
+"user2@example.com","$2b$12$AktA/6cBqjDzp8hFsVh0UOETn1ipAL4ouFFe/Qn2vCgMbMHADDciK","client"
+"akhtyamov_ilya@mail.ru","$2b$12$iKkejg6/zizNMPoHK2lKRe/ricyRckyFE2m8SUmMvF0wX6HYyczva","client"
